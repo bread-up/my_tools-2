@@ -22,11 +22,11 @@ jobs:
                                
        - name: Dump
          run: |
-              sudo apt update -y && sudo apt install tar wget zip unzip p7zip -y
+              sudo apt update -y && sudo apt install tar wget lz4 zip unzip p7zip -y
               mkdir fw && cd fw && wget -c ${{ github.event.inputs.LINK }}
               7za -y x *
               7za -y x "*.tar*"
-              7za -y x ${{ github.event.inputs.PART }}*
+              unlz4 ${{ github.event.inputs.PART }}*
               
        - name: Save
          uses: softprops/action-gh-release@v1
