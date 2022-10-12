@@ -22,7 +22,8 @@ jobs:
                                
        - name: Dump
          run: |
-              sudo apt update -y && sudo apt install tar wget lz4 zip unzip p7zip -y
+              sudo apt update -y && sudo apt install tar wget snapd zip unzip p7zip -y
+              sudo snap install lz4
               mkdir fw && cd fw && wget -c ${{ github.event.inputs.LINK }}
               7za -y x *
               7za -y x "*.tar*"
