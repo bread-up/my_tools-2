@@ -1,4 +1,4 @@
-name: Dump
+name: Dump (samsung)
 
 on:
   workflow_dispatch:
@@ -26,12 +26,12 @@ jobs:
               mkdir fw && cd fw && wget -c ${{ github.event.inputs.LINK }}
               7za -y x *
               7za -y x "*.tar*"
-              zip output.zip ${{ github.event.inputs.PART }}*
-
+              7za -y x ${{ github.event.inputs.PART }}*
+              
        - name: Save
          uses: softprops/action-gh-release@v1
          with:
-           files: /home/runner/work/my_tools/my_tools/fw/output.zip                     
+           files: /home/runner/work/my_tools/my_tools/fw/${{ github.event.inputs.PART }}.img                
            name: ${{ github.event.inputs.PART }}
            tag_name: ${{ github.run_id }}                    
          env:
