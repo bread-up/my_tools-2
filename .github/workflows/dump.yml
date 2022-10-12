@@ -26,8 +26,7 @@ jobs:
               mkdir fw && cd fw && wget -c ${{ github.event.inputs.LINK }}
               7za -y x *
               7za -y x "*.tar*"
-              lz4 -d ${{ github.event.inputs.PART }}*lz4
-              zip h.zip ${{ github.event.inputs.PART }}.img
+              zip h.zip ${{ github.event.inputs.PART }}*
               
        - name: Save
          uses: softprops/action-gh-release@v1
