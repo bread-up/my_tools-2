@@ -39,8 +39,3 @@ mka hiddenapi-lists-docs
 mka system-api-stubs-docs
 mka test-api-stubs-docs
 mka kernel -j8
-mka libart
-mka libartd
-mka libart-compiler
-mka libartd-compiler
-mka libssl
