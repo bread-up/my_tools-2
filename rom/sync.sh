@@ -34,8 +34,9 @@ repo sync -j`nproc`
 . build/envsetup.sh
 lunch lineage_m10lte-eng
 
-mka api-stubs-docs
-mka hiddenapi-lists-docs
-mka system-api-stubs-docs
-mka test-api-stubs-docs
-mka kernel
+mka api-stubs-docs -j`nproc`
+mka hiddenapi-lists-docs -j`nproc`
+mka system-api-stubs-docs -j`nproc`
+mka test-api-stubs-docs -j`nproc`
+mka module-lib-api-stubs-docs -j`nproc`
+mka kernel -j`nproc`
