@@ -38,4 +38,4 @@ mka api-stubs-docs
 mka hiddenapi-lists-docs
 mka system-api-stubs-docs
 mka test-api-stubs-docs
-mka kernelimage
+mka kernel
