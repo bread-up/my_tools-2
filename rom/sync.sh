@@ -28,7 +28,7 @@ repo init --depth=1 -u https://github.com/crdroidandroid/android.git -b 10.0
 git clone https://github.com/AndVer2/android_manifest_samsung_m10lte.git .repo/local_manifests
 
 # Sync
-repo sync -j`nproc`
+repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j`nproc`
 
 # Build
 . build/envsetup.sh
