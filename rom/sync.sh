@@ -38,5 +38,4 @@ mka api-stubs-docs -j`nproc`
 mka hiddenapi-lists-docs -j`nproc`
 mka system-api-stubs-docs -j`nproc`
 mka test-api-stubs-docs -j`nproc`
-mka module-lib-api-stubs-docs -j`nproc`
 mka kernel -j`nproc`
