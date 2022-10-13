@@ -34,8 +34,8 @@ repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimiz
 . build/envsetup.sh
 lunch lineage_m10lte-eng
 
-mka api-stubs-docs -j`nproc`
-mka hiddenapi-lists-docs -j`nproc`
-mka system-api-stubs-docs -j`nproc`
-mka test-api-stubs-docs -j`nproc`
-mka kernel -j`nproc`
+mka api-stubs-docs
+mka hiddenapi-lists-docs
+mka system-api-stubs-docs
+mka test-api-stubs-docs
+mka kernel -j8
