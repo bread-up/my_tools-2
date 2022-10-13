@@ -8,7 +8,7 @@ cd /root/crdroid
 . build/envsetup.sh
 lunch lineage_m10lte-eng
 
-mka libLLVMCORE
+mka libLLVMCore
 mka bootimage
 mka vendorimage
 mka recoveryimage
