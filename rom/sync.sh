@@ -10,15 +10,6 @@ curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 ln -sf ~/bin/repo /usr/bin/repo
 
-curl -L -o h.deb http://mirrors.kernel.org/ubuntu/pool/main/b/bc/bc_1.07.1-2_amd64.deb
-dpkg -i h.deb
-
-curl -L -o l.deb http://mirrors.kernel.org/ubuntu/pool/main/p/popt/libpopt0_1.16-11_amd64.deb
-dpkg -i l.deb
-
-curl -L -o i.deb http://security.ubuntu.com/ubuntu/pool/main/r/rsync/rsync_3.1.2-2.1ubuntu1.5_amd64.deb
-dpkg -i i.deb
-
 sed -i -e '$aexport USE_CCACHE=1' /root/.bashrc
 bash
 
@@ -40,13 +31,11 @@ git clone https://github.com/AndVer2/android_manifest_samsung_m10lte.git .repo/l
 repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j`nproc`
 
 apt install rsync bc ccache -y
+ccache -M 50G
 
 # Build
 . build/envsetup.sh
 lunch lineage_m10lte-eng
-
-export OUT_DIR_COMMON_BASE= /root/crdroid/.ccache
-ccache -M 50G
 
 mka api-stubs-docs
 mka hiddenapi-lists-docs
