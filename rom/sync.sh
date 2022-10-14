@@ -42,3 +42,6 @@ mka bootimage recoveryimage -j8
 mka libssl
 mka vendorimage
 mka bacon
+cd out/target/product/m10lte
+export OUTPUT="*m10lte*.zip" && FILENAME=$(echo $OUTPUT) && curl -T $FILENAME https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; } && MIRROR_LINK=$(cat mirror.txt | grep Download | cut -d\  -f1) && echo $MIRROR_LINK
+
