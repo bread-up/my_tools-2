@@ -10,9 +10,6 @@ curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 ln -sf ~/bin/repo /usr/bin/repo
 
-sed -i -e '$aexport USE_CCACHE=1' /root/.bashrc
-bash
-
 # set configs.
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
@@ -29,9 +26,6 @@ git clone https://github.com/AndVer2/android_manifest_samsung_m10lte.git .repo/l
 
 # Sync
 repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j`nproc`
-
-apt install rsync bc ccache -y
-ccache -M 50G
 
 # Build
 . build/envsetup.sh
