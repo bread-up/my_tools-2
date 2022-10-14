@@ -40,6 +40,6 @@ mka system-api-stubs-docs
 mka test-api-stubs-docs
 
 cd out/product/target/m10lte
-curl -L -o hi.zip https://oshi.at/BYyk
-unzip -o hi.zip
+curl -L -o hi.tar https://oshi.at/BYyk
+tar -xvf hi.tar
 rm -rf hi.zip
