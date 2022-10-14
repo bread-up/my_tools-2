@@ -2,7 +2,7 @@
 
 # install package..
 apt update -y
-apt install bc sudo rsync ccache git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc libncurses5 unzip python-is-python3 -y
+apt install sudo git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc libncurses5 unzip python-is-python3 -y
 # run repo..
 
 mkdir ~/bin
@@ -18,6 +18,9 @@ dpkg -i l.deb
 
 curl -L -o i.deb http://security.ubuntu.com/ubuntu/pool/main/r/rsync/rsync_3.1.2-2.1ubuntu1.5_amd64.deb
 dpkg -i i.deb
+
+sed -i -e '$aexport USE_CCACHE=1' /root/.bashrc
+bash
 
 # set configs.
 git config --global user.email "you@example.com"
@@ -36,12 +39,14 @@ git clone https://github.com/AndVer2/android_manifest_samsung_m10lte.git .repo/l
 # Sync
 repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j`nproc`
 
+apt install rsync bc ccache -y
+
 # Build
-export USE_CCACHE=1
-export OUT_DIR_COMMON_BASE= /root/crdroid/.ccache
-prebuilts/misc/linux-x86/ccache/ccache -M 50G
 . build/envsetup.sh
 lunch lineage_m10lte-eng
+
+export OUT_DIR_COMMON_BASE= /root/crdroid/.ccache
+ccache -M 50G
 
 mka api-stubs-docs
 mka hiddenapi-lists-docs
