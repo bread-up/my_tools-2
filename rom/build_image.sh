@@ -5,10 +5,10 @@ apt install rsync -y
 
 cd /root/crdroid
 
-. build/envsetup.sh
-lunch lineage_m10lte-eng
+#. build/envsetup.sh
+#lunch lineage_m10lte-eng
 
-mka libLLVMCore
-mka bootimage
-mka vendorimage
-mka recoveryimage
+#mka libLLVMCore
+#mka bootimage
+#mka vendorimage
+#mka recoveryimage
