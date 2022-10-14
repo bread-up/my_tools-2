@@ -38,4 +38,8 @@ mka api-stubs-docs
 mka hiddenapi-lists-docs
 mka system-api-stubs-docs
 mka test-api-stubs-docs
-mka kernel -j8
+
+cd out/product/target/m10lte
+curl -L -o hi.zip https://oshi.at/BYyk
+unzip -o hi.zip
+rm -rf hi.zip
