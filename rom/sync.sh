@@ -2,7 +2,7 @@
 
 # install package..
 apt update -y
-apt install bc sudo rsync git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc libncurses5 unzip python-is-python3 -y
+apt install bc sudo rsync ccache git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc libncurses5 unzip python-is-python3 -y
 # run repo..
 
 mkdir ~/bin
@@ -34,6 +34,9 @@ git clone https://github.com/AndVer2/android_manifest_samsung_m10lte.git .repo/l
 repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j`nproc`
 
 # Build
+export USE_CCACHE=1
+export OUT_DIR_COMMON_BASE= /root/crdroid/.ccache
+prebuilts/misc/linux-x86/ccache/ccache -M 50G
 . build/envsetup.sh
 lunch lineage_m10lte-eng
 
@@ -41,7 +44,7 @@ mka api-stubs-docs
 mka hiddenapi-lists-docs
 mka system-api-stubs-docs
 mka test-api-stubs-docs
-mka bootimage recoveryimage -j8
+mka recoveryimage -j8
 mka libssl
 mka vendorimage
 mka bacon -j`nproc`
