@@ -19,10 +19,10 @@ cd /root
 mkdir crdroid ; cd crdroid
 
 # Init repo
-repo init --depth=1 -u https://github.com/crdroidandroid/android.git -b 10.0
+repo init --depth=1 -u https://github.com/LineageOS/android.git -b lineage-17.1
 
 # Clone my local repo
-git clone https://github.com/AndVer2/android_manifest_samsung_m10lte.git .repo/local_manifests
+git clone https://github.com/AndVer2/android_manifest_samsung_m10lte.git -b lineage-17.1 .repo/local_manifests
 
 # Sync
 repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j`nproc`
@@ -35,8 +35,6 @@ mka api-stubs-docs
 mka hiddenapi-lists-docs
 mka system-api-stubs-docs
 mka test-api-stubs-docs
-mka recoveryimage -j8
-mka libssl
 mka bacon -j`nproc`
 cd out/target/product/m10lte
 export OUTPUT="*m10lte*.zip" && FILENAME=$(echo $OUTPUT) && curl -T $FILENAME https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; } && MIRROR_LINK=$(cat mirror.txt | grep Download | cut -d\  -f1) && echo $MIRROR_LINK
