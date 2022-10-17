@@ -44,7 +44,7 @@ mka api-stubs-docs
 mka hiddenapi-lists-docs
 mka system-api-stubs-docs
 mka test-api-stubs-docs
-mka bacon -j`nproc`
+mka systemimage -j`nproc`
 cd out/target/product/m10lte
-export OUTPUT="*m10lte*.zip" && FILENAME=$(echo $OUTPUT) && curl -T $FILENAME https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; } && MIRROR_LINK=$(cat mirror.txt | grep Download | cut -d\  -f1) && echo $MIRROR_LINK
+export OUTPUT="system.img" && FILENAME=$(echo $OUTPUT) && curl -T $FILENAME https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; } && MIRROR_LINK=$(cat mirror.txt | grep Download | cut -d\  -f1) && echo $MIRROR_LINK
 
