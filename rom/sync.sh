@@ -28,7 +28,7 @@ cd /root
 mkdir crdroid ; cd crdroid
 
 # Init repo
-repo init --depth=1 -u https://github.com/crdroidandroid/android -b 8.1
+repo init --depth=1 -u https://github.com/bread-up/android -b 8.1
 
 # Clone my local repo
 git clone https://github.com/youssefnone/android_manifest_samsung_m10lte.git -b crdroid-10 .repo/local_manifests
