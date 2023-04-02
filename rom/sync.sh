@@ -7,7 +7,7 @@ apt install locales sudo git-core tmate gnupg flex bison gperf build-essential z
 
 dpkg-reconfigure locales
 
-tmate
+export LANG=en_GB.UTF-8 && LC_CTYPE="en_GB.UTF-8" && LANGUAGE= && LC_ALL= && tmate
 
 mkdir ~/bin
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
