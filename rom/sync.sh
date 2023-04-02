@@ -3,12 +3,8 @@
 # install package
 apt update -y
 apt install locales sudo git-core tmate gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc libncurses5 unzip python3 -y
+
 # run repo
-
-dpkg-reconfigure locales
-
-export LANG=en_GB.UTF-8 && LC_CTYPE="en_GB.UTF-8" && LANGUAGE= && LC_ALL= && tmate
-
 mkdir ~/bin
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
@@ -33,7 +29,8 @@ repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimiz
 
 # Build
 . build/envsetup.sh
-brunch "m10lte"
+lunch lineage_m10lte-user
+mka bacon -j$(nproc --all)
 
 cd out/target/product/m10lte
 export OUTPUT="*m10lte*zip" && FILENAME=$(echo $OUTPUT) && curl -T $FILENAME https://oshi.at/${FILENAME}/${OUTPUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; } && MIRROR_LINK=$(cat mirror.txt | grep Download | cut -d\  -f1) && echo $MIRROR_LINK
