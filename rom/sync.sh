@@ -38,7 +38,7 @@ repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimiz
 
 # Build
 . build/envsetup.sh
-lunch lineage_m10lte-userdebug
+lunch lineage_m10lte-eng
 
 mka bacon -j$(nproc --all)
 cd out/target/product/m10lte
